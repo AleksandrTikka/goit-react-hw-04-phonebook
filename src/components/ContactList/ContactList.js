@@ -44,9 +44,7 @@ class Phonebook extends Component {
           </form>
         </Section>
         <Section title="Contacts">
-          <ul>
-            contacts.map((contact) => <li> contact </li>)
-          </ul>
+          <ul>{/* contacts.map((contact) => <li> contact </li>) */}</ul>
         </Section>
       </>
     );
