@@ -26,18 +26,14 @@ class App extends Component {
       contacts: [contact, ...prevState.contacts],
     }));
   };
-  // createContact(e) {
-  //   const name = this.state.name;
-  //   const number = this.state.number;
-  //   return { name: name, number: number, id: nanoid() };
-  // }
-  // addContact = newContact => {
-  //   this.setState(prevState => {
-  //     return {
-  //       contacts: [newContact, ...prevState.contacts],
-  //     };
-  //   });
-  // };
+
+  getVisibleContacts = () => {
+    const { contacts, filter } = this.state;
+    const normalizeFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizeFilter)
+    );
+  };
 
   deleteContact = contactId => {
     this.setState(prevState => ({
@@ -47,17 +43,10 @@ class App extends Component {
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
-    //   contacts: prevState.contacts.filter(contact =>
-    //     contact.name.toLowerCase().includes(filter.toLowerCase())
-    //   ),
-    // }));
   };
 
   render() {
-    const normalizeFilter = this.state.filter.toLowerCase();
-    const visibleContacts = this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizeFilter)
-    );
+    const visibleContacts = this.getVisibleContacts();
     return (
       <>
         <h1>Phonebook</h1>
