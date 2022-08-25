@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+
 import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
-import Contacts from './Contacts';
-// import Section from './Section';
+import ContactList from './ContactList';
+// import Section from './Section'
 
 class App extends Component {
   state = {
@@ -52,14 +53,12 @@ class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
 
-        <h2>
-          <Contacts
-            contacts={this.getVisibleContacts()}
-            onDeleteContact={this.deleteContact}
-          />
-        </h2>
+        <h2>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
-        <Contacts />
+        <ContactList
+          contacts={this.getVisibleContacts()}
+          onDeleteContact={this.deleteContact}
+        />
       </>
     );
   }
