@@ -23,10 +23,16 @@ class App extends Component {
       number,
       id: nanoid(),
     };
+    const compareContact = this.state.contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    console.log(compareContact);
 
-    this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }));
+    compareContact
+      ? alert(`${name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [contact, ...prevState.contacts],
+        }));
   };
 
   getVisibleContacts = () => {
