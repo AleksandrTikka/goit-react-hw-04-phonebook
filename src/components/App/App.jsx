@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import ContactForm from '../ContactForm';
 import Filter from '../Filter';
 import ContactList from '../ContactList';
-// import { GlobalStyle } from '../GlobalStyle';
+import { GlobalStyle } from '../GlobalStyle';
 
 import Section from '../Section';
 
@@ -57,7 +57,7 @@ class App extends Component {
   render() {
     return (
       <Box
-        // textAlign="center"
+        textAlign="center"
         bg="bgApp"
         pt={4}
         mx="auto"
@@ -71,12 +71,12 @@ class App extends Component {
         borderColor="border"
         as="main"
       >
-        <Box as="h1" textAlign="center" color="accent" fontSize="l">
+        <Box as="h1" textAlign="center" color="heading" fontSize="l">
           Phonebook
         </Box>
-        {/* <Section> */}
-        <ContactForm onSubmit={this.addContact} />
-        {/* </Section> */}
+        <Section>
+          <ContactForm onSubmit={this.addContact} />
+        </Section>
         <Section title="Contacts">
           {/* <h2>Contacts</h2> */}
           <Filter value={this.state.filter} onChange={this.changeFilter} />
@@ -86,7 +86,7 @@ class App extends Component {
           />
         </Section>
 
-        {/* <GlobalStyle /> */}
+        <GlobalStyle />
       </Box>
     );
   }

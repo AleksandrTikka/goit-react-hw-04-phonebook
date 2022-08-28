@@ -2,8 +2,10 @@ export const theme = {
   colors: {
     text: 'black',
     accent: 'green',
-    bgApp: '#B0E0E6',
-    bgButton: '#0000CD',
+    heading: '#cd5700',
+    bgApp: '#79F8F8',
+    bgButton: '#50C878',
+    bgButtonHover: '#7FFF00',
     border: '#B0C4DE',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
@@ -30,6 +32,7 @@ export const theme = {
   borders: {
     none: 'none',
     normal: '1px solid',
+    bold: '2px solid',
     dashed: '2px dashed',
   },
   radii: {

@@ -1,10 +1,11 @@
 // import React from 'react';
 import PropTypes from 'prop-types';
+import { Label, Input } from './Filter.styled';
 
 const Filter = ({ value, onChange }) => (
-  <label>
+  <Label>
     Find contacts by name
-    <input
+    <Input
       type="text"
       name="filter"
       value={value}
@@ -13,7 +14,7 @@ const Filter = ({ value, onChange }) => (
       title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
       required
     />
-  </label>
+  </Label>
 );
 
 Filter.propTypes = {
