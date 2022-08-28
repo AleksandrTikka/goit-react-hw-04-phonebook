@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import { Box } from '../Box';
 import { nanoid } from 'nanoid';
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
-// import Section from './Section'
+import ContactForm from '../ContactForm';
+import Filter from '../Filter';
+import ContactList from '../ContactList';
+// import { GlobalStyle } from '../GlobalStyle';
+
+import Section from '../Section';
 
 class App extends Component {
   state = {
@@ -26,7 +28,6 @@ class App extends Component {
     const compareContact = this.state.contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
-    console.log(compareContact);
 
     compareContact
       ? alert(`${name} is already in contacts`)
@@ -55,17 +56,38 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <h1>Phonebook</h1>
+      <Box
+        // textAlign="center"
+        bg="bgApp"
+        pt={4}
+        mx="auto"
+        mt="50px"
+        width="500px"
+        // display="flex"
+        flexWrap="wrap"
+        justifyContent="center"
+        border="normal"
+        borderRadius="md"
+        borderColor="border"
+        as="main"
+      >
+        <Box as="h1" textAlign="center" color="accent" fontSize="l">
+          Phonebook
+        </Box>
+        {/* <Section> */}
         <ContactForm onSubmit={this.addContact} />
+        {/* </Section> */}
+        <Section title="Contacts">
+          {/* <h2>Contacts</h2> */}
+          <Filter value={this.state.filter} onChange={this.changeFilter} />
+          <ContactList
+            contacts={this.getVisibleContacts()}
+            onDeleteContact={this.deleteContact}
+          />
+        </Section>
 
-        <h2>Contacts</h2>
-        <Filter value={this.state.filter} onChange={this.changeFilter} />
-        <ContactList
-          contacts={this.getVisibleContacts()}
-          onDeleteContact={this.deleteContact}
-        />
-      </>
+        {/* <GlobalStyle /> */}
+      </Box>
     );
   }
 }
