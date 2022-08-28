@@ -63,7 +63,6 @@ class App extends Component {
         mx="auto"
         mt="50px"
         width="500px"
-        // display="flex"
         flexWrap="wrap"
         justifyContent="center"
         border="normal"
@@ -78,7 +77,6 @@ class App extends Component {
           <ContactForm onSubmit={this.addContact} />
         </Section>
         <Section title="Contacts">
-          {/* <h2>Contacts</h2> */}
           <Filter value={this.state.filter} onChange={this.changeFilter} />
           <ContactList
             contacts={this.getVisibleContacts()}
