@@ -21,9 +21,9 @@ class App extends Component {
 
   addContact = ({ name, number }) => {
     const contact = {
+      id: nanoid(),
       name,
       number,
-      id: nanoid(),
     };
     const compareContact = this.state.contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
@@ -53,6 +53,20 @@ class App extends Component {
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
+
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   render() {
     return (
